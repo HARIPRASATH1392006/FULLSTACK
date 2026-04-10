@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class DivisibleBy13 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the start of the range: ");
+        int start = scanner.nextInt();
+        System.out.print("Enter the end of the range: ");
+        int end = scanner.nextInt();
+        for (int num = start; num <= end; num++) {
+            if (num % 13 == 0) {
+                int sum = sumOfDigits(num);
+                System.out.println("Number " + num + " is divisible by 13. Sum of its digits: " + sum);
+            } else {
+                int reversed = reverseNumber(num);
+                System.out.println("Number " + num + " is not divisible by 13. Reversed number: " + reversed);
+            }
+        }
+        scanner.close();
+    }
+    public static int sumOfDigits(int num) {
+        int sum = 0;
+        while (num != 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+    public static int reverseNumber(int num) {
+        int reversed = 0;
+        while (num != 0) {
+            reversed = reversed * 10 + num % 10;
+            num /= 10;
+        }
+        return reversed;
+    }
+}
